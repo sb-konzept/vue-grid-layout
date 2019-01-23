@@ -1,4 +1,4 @@
-import Vue from "vue";
+const Vue = window.Storyblok.vue
 import GridItem from './GridItem.vue';
 import GridLayout from './GridLayout.vue';
 // import ResponsiveGridLayout from './ResponsiveGridLayout.vue';

@@ -17,7 +17,7 @@
     }
 </style>
 <script>
-    import Vue from 'vue';
+    const Vue = window.Storyblok.vue
     var elementResizeDetectorMaker = require("element-resize-detector");
 
     import {bottom, compact, getLayoutItem, moveElement, validateLayout, cloneLayout} from '../helpers/utils';
@@ -272,7 +272,7 @@
                 if (l === undefined || l === null){
                     l = {x:0, y:0}
                 }
-                
+
                 if (eventName === "dragmove" || eventName === "dragstart") {
                     this.placeholder.i = id;
                     this.placeholder.x = l.x;
@@ -289,7 +289,7 @@
                         this.isDragging = false;
                     });
                 }
-                
+
                 // set layout element coordinates to dragged position
                 l.x = x;
                 l.y = y;
@@ -326,16 +326,16 @@
                 }
                 l.h = h;
                 l.w = w;
-            
+
                 if (this.responsive) this.responsiveGridLayout();
-                    
+
                 compact(this.layout, this.verticalCompact);
                 this.eventBus.$emit("compact");
                 this.updateHeight();
 
                 if (eventName === 'resizeend') this.$emit('layout-updated', this.layout);
             },
-            
+
             // finds or generates new layouts for set breakpoints
             responsiveGridLayout(){
 
@@ -346,8 +346,8 @@
                 if(this.lastBreakpoint != null && !this.layouts[this.lastBreakpoint])
                     this.layouts[this.lastBreakpoint] = cloneLayout(this.layout);
 
-                // Find or generate a new layout. 
-                let layout = findOrGenerateResponsiveLayout( 
+                // Find or generate a new layout.
+                let layout = findOrGenerateResponsiveLayout(
                     this.originalLayout,
                     this.layouts,
                     this.breakpoints,
@@ -356,7 +356,7 @@
                     newCols,
                     this.verticalCompact
                 );
-                
+
                 // Store the new layout.
                 this.layouts[newBreakpoint] = layout;
 
@@ -373,7 +373,7 @@
                 this.layouts = {};
             },
 
-            // find difference in layouts 
+            // find difference in layouts
             findDifference(layout, originalLayout){
 
                 //Find values that are in result1 but not in result2

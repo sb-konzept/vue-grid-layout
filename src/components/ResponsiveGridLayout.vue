@@ -17,12 +17,12 @@
     }
 </style>
 <script>
-    import Vue from 'vue';
+    const Vue = window.Storyblok.vue
     var elementResizeDetectorMaker = require("element-resize-detector");
 
     import {bottom, compact, getLayoutItem, moveElement, validateLayout} from '../helpers/utils';
     //var eventBus = require('./eventBus');
-    
+
     import GridItem from './GridItem.vue'
     import {addWindowEventListener, removeWindowEventListener} from "../helpers/DOM";
 
